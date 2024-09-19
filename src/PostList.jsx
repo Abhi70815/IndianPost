@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 const PostList = () => {
   const [data, setData] = useState([]);
   const [showData, setShow]= useState([]);
+  const [msg, setMsg]=useState('');
   const [load, setLoad]= useState(false)
   const { state } = useLocation();
   // console.log(state)
@@ -16,7 +17,7 @@ const PostList = () => {
    setShow(()=>[...data.PostOffice])
     console.log(data.PostOffice)
     setData(() => data.PostOffice);
-    console.log(data)
+    setMsg(data.Message);
     setLoad(false);
   }
   useEffect(() => {
@@ -43,7 +44,7 @@ const PostList = () => {
     <div className='postlist'>
       <div >
         <p><b>Pincode:{pincode}</b> </p>
-        <p><b>Message: </b>{data.Message} </p>
+        <p><b>Message: </b>{msg} </p>
       </div>
       <div className="filter">🔎
         <input type="text" placeholder='Filter' onChange={handleFilter} />
